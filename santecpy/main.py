@@ -15,6 +15,7 @@ class SantecLaser:
             raise ConnectionError("Connection failed") from e
         self._wavelength = None  # Private attribute for wavelength
         self._optical_power = None  # Private attribute for optical power
+        self.wavelength_range = (1530, 1610)  # Wavelength range in nm
 
     @property
     def su_code(self):
