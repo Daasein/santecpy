@@ -7,7 +7,7 @@ This project is designed to communicate with VISA and Santec tunable laser using
 To install the library directly from GitHub, use the following command:
 
 ```bash
-pip install git+https://github.com/Daasein/SantecLaserPy.git
+pip install git+https://github.com/Daasein/santecpy.git
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ pip install git+https://github.com/Daasein/SantecLaserPy.git
 Below is an example of how to instantiate and use the laser controller:
 
 ```python
-from santeclaserpy import SantecLaser
+from santecpy import SantecLaser
 
 # Initialize the laser controller
 laser = SantecLaser(address="GPIB0::30::INSTR")
