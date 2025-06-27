@@ -138,6 +138,34 @@ class SantecLaser:
                 )
             time.sleep(0.05)
 
+    def fine_tuning_on(self):
+        self.gpib.query("CD\n")
+        self.wait_for_busy()
+
+    def fine_tuning_off(self):
+        self.gpib.query("CE\n")
+        self.wait_for_busy()
+
+    def fine_tuning(self, value):
+        if not (-100.00 <= value <= 100.00):
+            raise ValueError("Allowed fine tuning value: XXX.XX in range +-100")
+        self.gpib.query(f"FT{value:.2f}\n")
+        self.wait_for_busy()
+
+    @property
+    def fine_tuning_value(self):
+        """
+        Property to get the current fine tuning value.
+        Returns:
+            float: The current fine tuning value.
+        """
+        return self.read_fine_tuning()
+
+    def read_fine_tuning_value(self):
+        self.gpib.query("FT\n")
+        code = self.gpib.read()
+        return float(code)
+
     @staticmethod
     def visadevlist():
         """
